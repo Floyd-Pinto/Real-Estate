@@ -1,12 +1,13 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const mysql = require('mysql2');
 
 // Set up MySQL connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'zenox',  // Change this to your MySQL username
-  password: 'Dormamu787@', // Change this to your MySQL password
-  database: 'Real_Estate', // Replace with your database name
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME || 'Real_Estate',
 });
 
 db.connect((err) => {
